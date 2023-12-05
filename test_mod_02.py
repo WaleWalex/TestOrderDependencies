@@ -8,8 +8,7 @@ def test_a():
 
 
 @pytest.mark.dependency(name="e",
-                        depends=["TestOrderDependencies/test_mod_01.py::a",
-                                 "TestOrderDependencies/test_mod_01.py::c"],
+                        depends=["a", "c"],
                         scope='session'
                         )
 def test_e():
@@ -17,8 +16,7 @@ def test_e():
 
 
 @pytest.mark.dependency(name="f",
-                        depends=["TestOrderDependencies/test_mod_01.py::b",
-                                 "TestOrderDependencies/test_mod_02.py::e"],
+                        depends=["b", "e"],
                         scope='session'
                         )
 def test_f():
@@ -26,7 +24,7 @@ def test_f():
 
 
 @pytest.mark.dependency(name="g",
-                        depends=["TestOrderDependencies/test_mod_01.py::TestClass::b"],
+                        depends=["b"],
                         scope='session'
                         )
 def test_g():
